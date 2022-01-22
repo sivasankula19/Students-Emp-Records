@@ -1,0 +1,40 @@
+
+
+<div>
+    <button mat-raised-button color="primary" (click)="navigateToHome()">Home</button>
+</div>
+<div>
+    <form [formGroup]='studentForm' class="form" (ngSubmit)="onSubmit()">
+        <div>
+            <mat-form-field  class="form-field" appearance="fill">
+                <mat-label>SName</mat-label>
+                <input matInput formControlName='Sname' placeholder="please enter student name">
+              </mat-form-field> 
+        </div>
+        <div>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>age</mat-label>
+                <input matInput formControlName='Sage' placeholder="please enter student age">
+              </mat-form-field> 
+        </div>
+        <div>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Sclass</mat-label>
+                <input matInput formControlName='Sclass' placeholder="please enter student Class">
+              </mat-form-field> 
+        </div>
+        <div>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Fees</mat-label>
+                <input matInput formControlName='fees' placeholder="please enter student fees">
+              </mat-form-field> 
+        </div>
+        <div>
+            <button  mat-raised-button color="primary" type="submit" [disabled]='studentForm.invalid'>Add Student</button>
+        </div>
+    </form>
+</div>
+
+
+
+

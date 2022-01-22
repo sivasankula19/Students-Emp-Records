@@ -1,0 +1,41 @@
+
+
+<div>
+    <button mat-raised-button color="primary" (click)="navigateToHome()">Home</button>
+</div>
+
+<div>
+    <form [formGroup]='employeeForm' class="form" (ngSubmit)="onSubmit()">
+        <div>
+            <mat-form-field  class="form-field" appearance="fill">
+                <mat-label>Ename</mat-label>
+                <input matInput formControlName='Ename' placeholder="please enter Employee name">
+              </mat-form-field> 
+        </div>
+        <div>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Eage</mat-label>
+                <input matInput formControlName='Eage' placeholder="please enter Employee age">
+              </mat-form-field> 
+        </div>
+        <div>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Sbranch</mat-label>
+                <input matInput formControlName='Ebranch' placeholder="please enter Employee branch">
+              </mat-form-field> 
+        </div>
+        <div>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Salary</mat-label>
+                <input matInput formControlName='salary' placeholder="please enter Employee salary">
+              </mat-form-field> 
+        </div>
+        <div>
+            <button  mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">Add Employee</button>
+        </div>
+    </form>
+</div>
+
+
+
+

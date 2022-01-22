@@ -1,0 +1,64 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>Students</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" (click)="navigateToStudent()">
+      <mat-icon>person_add</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+
+<div>
+  <table mat-table [dataSource]="dataSource" style="width: 100%;" class="mat-elevation-z8">
+    <ng-container matColumnDef="Sname">
+      <th mat-header-cell *matHeaderCellDef> Sname </th>
+      <td mat-cell *matCellDef="let element"> {{element.Sname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Sage">
+      <th mat-header-cell *matHeaderCellDef> Sage </th>
+      <td mat-cell *matCellDef="let element"> {{element.Sage}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Sclass">
+      <th mat-header-cell *matHeaderCellDef> Sclass </th>
+      <td mat-cell *matCellDef="let element"> {{element.Sclass}} </td>
+    </ng-container>
+    <ng-container matColumnDef="fees">
+      <th mat-header-cell *matHeaderCellDef> fees </th>
+      <td mat-cell *matCellDef="let element"> {{element.fees}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+here displays the employees details
+<div>
+  <mat-toolbar color="primary">
+    <span>Employee</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" (click)="navigateToEmployee()">
+      <mat-icon>person_add</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+<div>
+  <table mat-table [dataSource]="mydata" style="width: 100%;" class="mat-elevation-z8">
+    <ng-container matColumnDef="Ename">
+      <th mat-header-cell *matHeaderCellDef> Ename </th>
+      <td mat-cell *matCellDef="let element"> {{element.Ename}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Eage">
+      <th mat-header-cell *matHeaderCellDef> Eage </th>
+      <td mat-cell *matCellDef="let element"> {{element.Eage}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Ebranch">
+      <th mat-header-cell *matHeaderCellDef> Ebranch </th>
+      <td mat-cell *matCellDef="let element"> {{element.Ebranch}} </td>
+    </ng-container>
+    <ng-container matColumnDef="salary">
+      <th mat-header-cell *matHeaderCellDef> salary </th>
+      <td mat-cell *matCellDef="let element"> {{element.salary}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+  </table>
+</div>
