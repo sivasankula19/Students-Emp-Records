@@ -5,6 +5,7 @@
   },
   "hosting": {
     "public": "public",
+    "site": "studentsankula",
     "ignore": [
       "firebase.json",
       "**/.*",
