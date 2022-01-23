@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { COLLECTIONS } from '../Enums/collections.enum';
 import { CurdService } from '../services/curd.service';
 
 @Component({
@@ -24,14 +25,12 @@ export class EmployeeComponent implements OnInit {
 
 
   onSubmit(){
-    this.curdService.setEmployee(this.employeeForm.value).then((res:any) => {
+    this.curdService.setRecord(COLLECTIONS.EMPLOYEES, this.employeeForm.value).then((res:any) => {
       alert('Employee added Successfully')
       this.router.navigate(['home'])
     }).catch((err:any) => {
       console.log(err)
     })
-    console.log(this.employeeForm.value)
-    this.employeeForm.reset()
   }
   navigateToHome(){
     this.router.navigate(['home'])

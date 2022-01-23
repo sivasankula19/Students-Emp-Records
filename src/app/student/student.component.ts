@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { COLLECTIONS } from '../Enums/collections.enum';
 import { CurdService } from '../services/curd.service';
 
 @Component({
@@ -22,13 +23,12 @@ export class StudentComponent implements OnInit {
   }
 
   onSubmit(){
-    this.curdService.setStudent(this.studentForm.value).then((res:any) =>{
+    this.curdService.setRecord(COLLECTIONS.STUDENTS, this.studentForm.value).then((res:any) =>{
       alert('Student added successfully')
       this.router.navigate(['home'])
     }).catch((err:any)=>{
       console.log(err)
     })
-    console.log(this.studentForm.value)
   }
 
   navigateToHome(){

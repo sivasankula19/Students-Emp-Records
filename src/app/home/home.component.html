@@ -1,5 +1,8 @@
 <div>
-  <mat-toolbar color="primary">
+  Here is the details of School Students details---Government high School Gurazala
+</div>
+<div>
+  <mat-toolbar color="primary" style="width: 100%;">
     <span>Students</span>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" (click)="navigateToStudent()">
@@ -8,57 +11,171 @@
   </mat-toolbar>
 </div>
 
-<div>
-  <table mat-table [dataSource]="dataSource" style="width: 100%;" class="mat-elevation-z8">
-    <ng-container matColumnDef="Sname">
-      <th mat-header-cell *matHeaderCellDef> Sname </th>
-      <td mat-cell *matCellDef="let element"> {{element.Sname}} </td>
-    </ng-container>
-    <ng-container matColumnDef="Sage">
-      <th mat-header-cell *matHeaderCellDef> Sage </th>
-      <td mat-cell *matCellDef="let element"> {{element.Sage}} </td>
-    </ng-container>
-    <ng-container matColumnDef="Sclass">
-      <th mat-header-cell *matHeaderCellDef> Sclass </th>
-      <td mat-cell *matCellDef="let element"> {{element.Sclass}} </td>
-    </ng-container>
-    <ng-container matColumnDef="fees">
-      <th mat-header-cell *matHeaderCellDef> fees </th>
-      <td mat-cell *matCellDef="let element"> {{element.fees}} </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+<div class="d-flex justify-content-between" style="width: 80%;">
+  <div>
+    <table mat-table [dataSource]="dataSource" style="width: 150%;" class="mat-elevation-z8">
+      <ng-container matColumnDef="Sname">
+        <th mat-header-cell *matHeaderCellDef> Student Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.Sname}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Sage">
+        <th mat-header-cell *matHeaderCellDef> Student Age </th>
+        <td mat-cell *matCellDef="let element"> {{element.Sage}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Sclass">
+        <th mat-header-cell *matHeaderCellDef> Calss </th>
+        <td mat-cell *matCellDef="let element"> {{element.Sclass}} </td>
+      </ng-container>
+      <ng-container matColumnDef="fees">
+        <th mat-header-cell *matHeaderCellDef> Fees </th>
+        <td mat-cell *matCellDef="let element"> {{element.fees}} </td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element"> <button mat-icon-button class="example-icon favorite-icon"
+            (click)="EditStudentRowWithId(element)">
+            <mat-icon>edit</mat-icon>
+          </button></td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element"> <button mat-icon-button class="example-icon favorite-icon"
+            (click)="deleteStudent(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button></td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div>
+    <div *ngIf="isStudentEdit">
+      <form [formGroup]='studentForm' class="form" (ngSubmit)="onSubmitStudent()">
+        <div>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Student Name</mat-label>
+            <input matInput formControlName='Sname' placeholder="please enter student name">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Student Age</mat-label>
+            <input matInput formControlName='Sage' placeholder="please enter student age">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Calss</mat-label>
+            <input matInput formControlName='Sclass' placeholder="please enter student class">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Fees</mat-label>
+            <input matInput formControlName='fees' placeholder="please enter student fees">
+          </mat-form-field>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <button mat-raised-button color="primary" type="submit" [disabled]='studentForm.invalid'>Update
+              Student</button>
+          </div>
+          <div>
+            <button mat-raised-button color="primary" type="button" (click)="cancleEdit()"> Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
-here displays the employees details
+
+
+
+
 <div>
-  <mat-toolbar color="primary">
-    <span>Employee</span>
+  Here is the details of Company employees details --- SMD Solutions,Hyd
+</div>
+<div>
+  <mat-toolbar color="primary" style="width: 100%;">
+    <span>Employees</span>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" (click)="navigateToEmployee()">
       <mat-icon>person_add</mat-icon>
     </button>
   </mat-toolbar>
 </div>
-<div>
-  <table mat-table [dataSource]="mydata" style="width: 100%;" class="mat-elevation-z8">
-    <ng-container matColumnDef="Ename">
-      <th mat-header-cell *matHeaderCellDef> Ename </th>
-      <td mat-cell *matCellDef="let element"> {{element.Ename}} </td>
-    </ng-container>
-    <ng-container matColumnDef="Eage">
-      <th mat-header-cell *matHeaderCellDef> Eage </th>
-      <td mat-cell *matCellDef="let element"> {{element.Eage}} </td>
-    </ng-container>
-    <ng-container matColumnDef="Ebranch">
-      <th mat-header-cell *matHeaderCellDef> Ebranch </th>
-      <td mat-cell *matCellDef="let element"> {{element.Ebranch}} </td>
-    </ng-container>
-    <ng-container matColumnDef="salary">
-      <th mat-header-cell *matHeaderCellDef> salary </th>
-      <td mat-cell *matCellDef="let element"> {{element.salary}} </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
-  </table>
+<div class="d-flex justify-content-between" style="width: 80%;">
+  <div>
+    <table mat-table [dataSource]="mydata" style="width: 150%;" class="mat-elevation-z8">
+      <ng-container matColumnDef="Ename">
+        <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.Ename}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Eage">
+        <th mat-header-cell *matHeaderCellDef> Employee Age </th>
+        <td mat-cell *matCellDef="let element"> {{element.Eage}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Ebranch">
+        <th mat-header-cell *matHeaderCellDef> Department </th>
+        <td mat-cell *matCellDef="let element"> {{element.Ebranch}} </td>
+      </ng-container>
+      <ng-container matColumnDef="salary">
+        <th mat-header-cell *matHeaderCellDef> Salary </th>
+        <td mat-cell *matCellDef="let element"> {{element.salary}} </td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element"> <button mat-icon-button class="example-icon favorite-icon" (click)="EditEmployeeRowWithId(element)">
+            <mat-icon>edit</mat-icon>
+          </button></td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element"> <button mat-icon-button class="example-icon favorite-icon" (click)="deleteEmployee(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button></td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+    </table>
+  </div>
+  <div>
+    <div *ngIf="isEmployeeEdit">
+      <form [formGroup]='employeeForm' class="form" (ngSubmit)="onSubmitEmployee()">
+        <div>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Ename</mat-label>
+            <input matInput formControlName='Ename' placeholder="please enter Employee name">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Eage</mat-label>
+            <input matInput formControlName='Eage' placeholder="please enter Employee age">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Sbranch</mat-label>
+            <input matInput formControlName='Ebranch' placeholder="please enter Employee branch">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Salary</mat-label>
+            <input matInput formControlName='salary' placeholder="please enter Employee salary">
+          </mat-form-field>
+        </div>
+        <div class="d-flex justify-content-between">
+        <div>
+          <button mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">
+           Update Employee</button>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" type="button" (click)="cancleEdit()"> Cancel</button>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
 </div>
